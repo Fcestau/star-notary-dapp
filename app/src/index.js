@@ -1,7 +1,7 @@
 import Web3 from "web3";
 import starNotaryArtifact from "../../build/contracts/StarNotary.json";
 
-const App = {
+const App = {  
   web3: null,
   account: null,
   meta: null,
@@ -35,13 +35,16 @@ const App = {
     const { createStar } = this.meta.methods;
     const name = document.getElementById("starName").value;
     const id = document.getElementById("starId").value;
-    await createStar(name, id).send({from: this.account});
+    await App.meta.methods.createStar(name, id).send({from: this.account});
     App.setStatus("New Star Owner is " + this.account + ".");
   },
 
   // Implement Task 4 Modify the front end of the DAPP
   lookUp: async function (){
-    
+    const id = document.getElementById("lookid").value;
+    let name;
+    await App.meta.methods.lookUptokenIdToStarInfo(id).call({from: this.account}).then(resp => name = resp);
+    App.setStatus("The name of the star " + id + " is " + name + ".");
   }
 
 };
@@ -49,10 +52,10 @@ const App = {
 window.App = App;
 
 window.addEventListener("load", async function() {
-  if (window.ethereum) {
+  if (window.ethereum !== 'undefined') {
     // use MetaMask's provider
     App.web3 = new Web3(window.ethereum);
-    await window.ethereum.enable(); // get permission to access accounts
+    ethereum.request({ method: 'eth_requestAccounts' }); // get permission to access accounts
   } else {
     console.warn("No web3 detected. Falling back to http://127.0.0.1:9545. You should remove this fallback when you deploy live",);
     // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
