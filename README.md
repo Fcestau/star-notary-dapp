@@ -1,5 +1,5 @@
 # Udacity Star Notary Service
-Token name:Star Notary Service </br>
+Token name: Star Notary Service </br>
 Token symbol: SNS
 
 
