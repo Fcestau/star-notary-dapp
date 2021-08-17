@@ -12,8 +12,8 @@ contract StarNotary is ERC721 {
         string name;
     }
 
-    string public name = "Star Notary System";
-    string public symbol = "SNS";
+    string public constant name = "Star Notary System";
+    string public constant symbol = "SNS";
 
     // mapping the Star with the Owner Address
     mapping(uint256 => Star) public tokenIdToStarInfo;
