@@ -1,5 +1,5 @@
 # Udacity Star Notary Service
-Token name:Star Notary Service
+Token name:Star Notary Service </br>
 Token symbol: SNS
 
 
@@ -10,5 +10,7 @@ npm install
 npm run dev
 ```
 ### Versions
+`
 Truffle v5.4.2
 OpenZeppelin 2.3
+`
